@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ThePromoHive</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    header video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    header .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    .tagline {
+      font-size: 1.5rem;
+      margin-top: 10px;
+    }
+
+    .packages {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .package {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .package:hover {
+      transform: scale(1.02);
+    }
+
+    .package-details {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .package-details ul {
+      padding-left: 20px;
+    }
+
+    .package-details a {
+      display: inline-block;
+      margin-top: 10px;
+      background: #0070f3;
+      color: #fff;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #000;
+      color: #fff;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <video autoplay muted loop playsinline>
+      <source src="background.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="overlay">
+      <h1>ThePromoHive</h1>
+      <p class="tagline">Grow on social media with us</p>
+    </div>
+  </header>
+
+  <section class="packages">
+    <div class="package" onclick="togglePackage(this)">
+      <h2>Starter Boost – $20</h2>
+      <p>Great for new accounts</p>
+      <div class="package-details">
+        <ul>
+          <li>Promotion on 2 pages with 100k+ followers</li>
+          <li>Instagram story + feed post</li>
+          <li>Basic engagement boost</li>
+        </ul>
+        <a href="https://www.paypal.me/shahrukhbnr/20" target="_blank">Buy Now</a>
+      </div>
+    </div>
+
+    <div class="package" onclick="togglePackage(this)">
+      <h2>Pro Exposure – $50</h2>
+      <p>Reach a wider audience</p>
+      <div class="package-details">
+        <ul>
+          <li>Promotion on 5 pages with 300k+ followers</li>
+          <li>Story + feed + hashtag targeting</li>
+          <li>Targeted audience analytics</li>
+        </ul>
+        <a href="https://www.paypal.me/shahrukhbnr/50" target="_blank">Buy Now</a>
+      </div>
+    </div>
+
+    <div class="package" onclick="togglePackage(this)">
+      <h2>Elite Blast – $100</h2>
+      <p>Massive reach & growth</p>
+      <div class="package-details">
+        <ul>
+          <li>Promotion on 10 pages with 1M+ followers</li>
+          <li>Story, post & reel blast</li>
+          <li>Full insights and custom tracking</li>
+        </ul>
+        <a href="https://www.paypal.me/shahrukhbnr/100" target="_blank">Buy Now</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Contact us: <a href="mailto:thepromohivehelp@gmail.com">thepromohivehelp@gmail.com</a>
+  </footer>
+
+  <script>
+    function togglePackage(el) {
+      const detail = el.querySelector(".package-details");
+      const isVisible = detail.style.display === "block";
+      document.querySelectorAll('.package-details').forEach(d => d.style.display = 'none');
+      detail.style.display = isVisible ? "none" : "block";
+    }
+  </script>
+</body>
+</html>
