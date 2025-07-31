@@ -4,13 +4,57 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ThePromoHive</title>
+  <meta name="description" content="Get real Instagram growth through our custom promotion packages. Boost your brand today with ThePromoHive." />
+  <meta name="keywords" content="Instagram promotion, social media growth, influencer marketing, buy Instagram promo, ThePromoHive" />
+  <meta name="author" content="ThePromoHive" />
+  <meta property="og:title" content="ThePromoHive - Instagram Promotion Services">
+  <meta property="og:description" content="Grow your Instagram account organically through manual promotions. Select from our tailored packages.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thepromohive.vercel.app">
+  <meta property="og:image" content="https://thepromohive.vercel.app/thumbnail.jpg">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Font Awesome for payment icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
+    :root {
+      --primary: #007BFF;
+      --bg: #f0f8ff;
+      --text: #333;
+      --white: #fff;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.85);
+      color: white;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 12px;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      color: var(--primary);
     }
 
     header {
@@ -31,68 +75,139 @@
 
     header .overlay {
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 50, 0.6);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      color: #fff;
-      text-align: center;
+      color: white;
       padding: 20px;
-      animation: fadeIn 2s ease-in-out;
+      text-align: center;
     }
 
     h1 {
       font-size: 3rem;
       margin: 0;
+      color: red;
+      opacity: 0;
+      animation: fadeSlideIn 2s ease-out forwards;
     }
 
     .tagline {
       font-size: 1.5rem;
       margin-top: 10px;
+      text-align: center;
+      white-space: normal;
+      width: 100%;
+      animation: fadeSlideIn 2s ease-out forwards;
+      animation-delay: 0.5s;
+      opacity: 0;
+    }
+
+    @keyframes fadeSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .packages {
-      padding: 40px 20px;
-      max-width: 800px;
+      padding: 100px 20px 40px;
+      max-width: 1100px;
       margin: auto;
     }
 
     .package {
-      background: #fff;
+      background: white;
+      border-left: 6px solid var(--primary);
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       padding: 20px;
       margin-bottom: 20px;
       cursor: pointer;
-      transition: transform 0.2s ease;
+      transition: transform 0.3s;
     }
 
     .package:hover {
       transform: scale(1.02);
     }
 
+    .package h2 {
+      margin: 0;
+      color: var(--primary);
+    }
+
     .package-details {
       display: none;
       margin-top: 10px;
+      animation: fadeIn 0.3s ease-in;
     }
 
     .package-details ul {
       padding-left: 20px;
+      margin: 10px 0;
     }
 
-    .package-details a {
-      display: inline-block;
+    .payment-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
       margin-top: 10px;
-      background: #0070f3;
-      color: #fff;
-      padding: 10px 15px;
-      text-decoration: none;
+    }
+
+    .payment-options div {
+      background: #e0ecff;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      flex: 1;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .payment-options div:hover {
+      background: #d4e3ff;
+    }
+
+    .payment-options i {
+      margin-right: 8px;
+      color: #333;
+    }
+
+    .coming-soon {
+      font-size: 0.8em;
+      color: red;
+      margin-top: 5px;
+    }
+
+    .faq {
+      max-width: 800px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .faq h2 {
+      text-align: center;
+    }
+
+    .faq h3 {
+      cursor: pointer;
+      background: #cce5ff;
+      padding: 12px;
+      margin-bottom: 5px;
       border-radius: 5px;
+    }
+
+    .faq p {
+      display: none;
+      margin: 0 0 20px;
+      padding: 0 10px;
     }
 
     footer {
@@ -103,74 +218,147 @@
     }
 
     @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      .tagline { font-size: 1rem; }
+      .payment-options div { flex: 100%; }
     }
   </style>
 </head>
 <body>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#packages">Packages</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+
   <header>
-    <video autoplay muted loop playsinline>
+    <video autoplay muted loop>
       <source src="background.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
     </video>
     <div class="overlay">
       <h1>ThePromoHive</h1>
-      <p class="tagline">Grow on social media with us</p>
+      <div class="tagline">Grow on social media with us</div>
     </div>
   </header>
 
-  <section class="packages">
-    <div class="package" onclick="togglePackage(this)">
-      <h2>Starter Boost – $20</h2>
-      <p>Great for new accounts</p>
+  <section id="packages" class="packages">
+    <div class="package" onclick="toggleDetails(this)">
+      <h2>Starter Package - $29</h2>
       <div class="package-details">
         <ul>
           <li>Promotion on 2 pages with 100k+ followers</li>
-          <li>Instagram story + feed post</li>
-          <li>Basic engagement boost</li>
+          <li>Real & Organic Growth</li>
+          <li>Delivery in 12-48 hours</li>
         </ul>
-        <a href="https://www.paypal.me/shahrukhbnr/20" target="_blank">Buy Now</a>
+        <div class="payment-options">
+          <div onclick="window.open('https://www.paypal.me/shahrukhbnr','_blank')">
+            <i class="fab fa-paypal"></i> PayPal
+          </div>
+          <div>
+            <i class="fab fa-stripe"></i> Stripe
+            <div class="coming-soon">Coming Soon</div>
+          </div>
+          <div>
+            <i class="fa-solid fa-money-bill-transfer"></i> Wise
+            <div class="coming-soon">Coming Soon</div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="package" onclick="togglePackage(this)">
-      <h2>Pro Exposure – $50</h2>
-      <p>Reach a wider audience</p>
+    <div class="package" onclick="toggleDetails(this)">
+      <h2>Growth Package - $59</h2>
       <div class="package-details">
         <ul>
           <li>Promotion on 5 pages with 300k+ followers</li>
-          <li>Story + feed + hashtag targeting</li>
-          <li>Targeted audience analytics</li>
+          <li>Faster Exposure</li>
+          <li>Delivery in 12-48 hours</li>
         </ul>
-        <a href="https://www.paypal.me/shahrukhbnr/50" target="_blank">Buy Now</a>
+        <div class="payment-options">
+          <div onclick="window.open('https://www.paypal.me/shahrukhbnr','_blank')">
+            <i class="fab fa-paypal"></i> PayPal
+          </div>
+          <div>
+            <i class="fab fa-stripe"></i> Stripe
+            <div class="coming-soon">Coming Soon</div>
+          </div>
+          <div>
+            <i class="fa-solid fa-money-bill-transfer"></i> Wise
+            <div class="coming-soon">Coming Soon</div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="package" onclick="togglePackage(this)">
-      <h2>Elite Blast – $100</h2>
-      <p>Massive reach & growth</p>
+    <div class="package" onclick="toggleDetails(this)">
+      <h2>Elite Package - $119</h2>
       <div class="package-details">
         <ul>
           <li>Promotion on 10 pages with 1M+ followers</li>
-          <li>Story, post & reel blast</li>
-          <li>Full insights and custom tracking</li>
+          <li>Maximum Reach & Fast Results</li>
+          <li>Delivery in 12-48 hours</li>
         </ul>
-        <a href="https://www.paypal.me/shahrukhbnr/100" target="_blank">Buy Now</a>
+        <div class="payment-options">
+          <div onclick="window.open('https://www.paypal.me/shahrukhbnr','_blank')">
+            <i class="fab fa-paypal"></i> PayPal
+          </div>
+          <div>
+            <i class="fab fa-stripe"></i> Stripe
+            <div class="coming-soon">Coming Soon</div>
+          </div>
+          <div>
+            <i class="fa-solid fa-money-bill-transfer"></i> Wise
+            <div class="coming-soon">Coming Soon</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
+  <section id="faq" class="faq">
+    <h2>FAQ</h2>
+
+    <h3 onclick="toggleFaq(this)">When will my promotion start?</h3>
+    <p>Promotions start within 12–48 hours after purchase.</p>
+
+    <h3 onclick="toggleFaq(this)">Are the followers real?</h3>
+    <p>Yes! We promote manually through real Instagram pages — no bots, no tricks.</p>
+
+    <h3 onclick="toggleFaq(this)">How do I pay?</h3>
+    <p>Currently through PayPal. Stripe and Wise coming soon!</p>
+
+    <h3 onclick="toggleFaq(this)">What type of content works best?</h3>
+    <p>Reels and engaging posts with clear CTAs perform best on promoted pages.</p>
+
+    <h3 onclick="toggleFaq(this)">Can I target a specific niche or region?</h3>
+    <p>Yes! Let us know your niche (fashion, business, music, etc.) and we’ll match accordingly.</p>
+
+    <h3 onclick="toggleFaq(this)">Can I see results even with the Starter package?</h3>
+    <p>Yes, the Starter package provides exposure through 2 active niche pages — great for testing the waters.</p>
+
+    <h3 onclick="toggleFaq(this)">What if I want a custom campaign?</h3>
+    <p>We offer custom promo bundles tailored to your audience. Contact us on Instagram after payment.</p>
+  </section>
+
   <footer>
-    Contact us: <a href="mailto:thepromohivehelp@gmail.com">thepromohivehelp@gmail.com</a>
+    &copy; 2025 ThePromoHive. All rights reserved.
   </footer>
 
   <script>
-    function togglePackage(el) {
-      const detail = el.querySelector(".package-details");
-      const isVisible = detail.style.display === "block";
-      document.querySelectorAll('.package-details').forEach(d => d.style.display = 'none');
-      detail.style.display = isVisible ? "none" : "block";
+    function toggleDetails(elem) {
+      const details = elem.querySelector('.package-details');
+      details.style.display = details.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleFaq(elem) {
+      const p = elem.nextElementSibling;
+      p.style.display = p.style.display === 'block' ? 'none' : 'block';
     }
   </script>
 </body>
