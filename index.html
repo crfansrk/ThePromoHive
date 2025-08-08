@@ -40,13 +40,16 @@
       scroll-behavior: smooth; /* Smooth scrolling for anchor links */
     }
 
+    /* Add scroll margin to account for the fixed navbar */
     #faq {
+      scroll-margin-top: 70px; /* Adjust based on the height of the navbar */
       max-width: 100%;
       overflow-x: hidden;
       padding: 0 15px; /* Ensure no horizontal overflow due to padding */
     }
 
-    .packages {
+    /* Ensure no horizontal overflow in other sections */
+    .packages, header {
       max-width: 100%;
       overflow-x: hidden;
     }
