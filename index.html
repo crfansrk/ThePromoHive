@@ -74,46 +74,87 @@
     }
 
     header .overlay {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 50, 0.6);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      text-align: center;
       color: white;
       padding: 20px;
-      text-align: center;
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 5rem;
+      font-weight: bold;
+      text-transform: uppercase;
       margin: 0;
-      color: red;
+      line-height: 1.2;
+      display: flex;
+      flex-direction: column; /* Ensure the title is split into lines */
+      justify-content: center;
+      align-items: center;
       opacity: 0;
-      animation: fadeSlideIn 2s ease-out forwards;
+      animation: fadeInLetters 3s ease-out forwards;
+    }
+
+    h1 .line {
+      display: block; /* Each word is treated as a block for proper alignment */
+      opacity: 0;
+      animation: fadeInLetter 0.5s ease-in forwards;
+    }
+
+    h1 .line:nth-child(1) {
+      animation-delay: 0s; /* "THE" fades in first */
+    }
+
+    h1 .line:nth-child(2) {
+      animation-delay: 0.5s; /* "PROMO" fades in second */
+    }
+
+    h1 .line:nth-child(3) {
+      animation-delay: 1s; /* "HIVE" fades in third */
     }
 
     .tagline {
       font-size: 1.5rem;
-      margin-top: 10px;
-      text-align: center;
-      white-space: normal;
-      width: 100%;
-      animation: fadeSlideIn 2s ease-out forwards;
-      animation-delay: 0.5s;
+      margin-top: 20px;
       opacity: 0;
+      animation: fadeInTagline 2s ease-out forwards;
+      animation-delay: 1.5s; /* Starts after the title animation */
     }
 
-    @keyframes fadeSlideIn {
+    @keyframes fadeInLetters {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInLetter {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
       }
       to {
         opacity: 1;
         transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInTagline {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 3rem;
+      }
+      .tagline {
+        font-size: 1rem;
       }
     }
 
@@ -132,6 +173,10 @@
       margin-bottom: 20px;
       cursor: pointer;
       transition: transform 0.3s;
+      /* Add a default transition delay for individual package animations */
+      opacity: 0;
+      transform: translateX(100px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
     .package:hover {
@@ -222,10 +267,37 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 600px) {
-      h1 { font-size: 2rem; }
-      .tagline { font-size: 1rem; }
-      .payment-options div { flex: 100%; }
+    /* Slide-in animation from right */
+    @keyframes slideInFromRight {
+      from {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .slide-in {
+      opacity: 0; /* Initially hidden */
+      transform: translateX(100px); /* Start off-screen to the right */
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .slide-in.visible {
+      animation: slideInFromRight 0.8s ease-out forwards;
+    }
+
+    .package {
+      /* Add a default transition delay for individual package animations */
+      opacity: 0;
+      transform: translateX(100px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .package.visible {
+      animation: slideInFromRight 0.8s ease-out forwards;
     }
   </style>
 </head>
@@ -242,12 +314,17 @@
       <source src="background.mp4" type="video/mp4" />
     </video>
     <div class="overlay">
-      <h1>ThePromoHive</h1>
-      <div class="tagline">Grow on social media with us</div>
+      <h1>
+        <span class="line">THE</span>
+        <span class="line">PROMO</span>
+        <span class="line">HIVE</span>
+      </h1>
+      <div class="tagline">Grow with us on social media</div>
     </div>
   </header>
 
-  <section id="packages" class="packages">
+  <div class="packages slide-in" id="packages">
+    <h2>Our Promotion Packages</h2>
     <div class="package" onclick="toggleDetails(this)">
       <h2>Starter Package - $29</h2>
       <div class="package-details">
@@ -319,11 +396,10 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section id="faq" class="faq">
-    <h2>FAQ</h2>
-
+  <div class="faq slide-in" id="faq">
+    <h2>Frequently Asked Questions</h2>
     <h3 onclick="toggleFaq(this)">When will my promotion start?</h3>
     <p>Promotions start within 12–48 hours after purchase.</p>
 
@@ -343,11 +419,11 @@
     <p>Yes, the Starter package provides exposure through 2 active niche pages — great for testing the waters.</p>
 
     <h3 onclick="toggleFaq(this)">What if I want a custom campaign?</h3>
-    <p>We offer custom promo bundles tailored to your audience. Contact us on Instagram after payment.</p>
-  </section>
+    <p>We offer custom promo bundles tailored to your audience. Contact us on Instagram or mail us.</p>
+  </div>
 
   <footer>
-    &copy; 2025 ThePromoHive. All rights reserved.
+    <p>&copy; 2025 ThePromoHive. All rights reserved.</p>
   </footer>
 
   <script>
@@ -360,6 +436,38 @@
       const p = elem.nextElementSibling;
       p.style.display = p.style.display === 'block' ? 'none' : 'block';
     }
+
+    // JavaScript to handle scroll animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const observerOptions = {
+        threshold: 0.1, // Trigger when 10% of the element is visible
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (entry.target.classList.contains('package')) {
+              // Add a delay for each package based on its index
+              const packages = Array.from(document.querySelectorAll('.package'));
+              packages.forEach((pkg, index) => {
+                if (pkg === entry.target) {
+                  pkg.style.animationDelay = `${index * 0.2}s`; // Delay increases by 0.2s for each package
+                  pkg.classList.add('visible');
+                }
+              });
+            } else {
+              entry.target.classList.add('visible'); // Add the 'visible' class for non-package elements
+            }
+          } else {
+            entry.target.classList.remove('visible'); // Remove the 'visible' class when out of view
+          }
+        });
+      }, observerOptions);
+
+      // Observe the "Packages" and "FAQ" sections
+      const sections = document.querySelectorAll('.slide-in, .package');
+      sections.forEach((section) => observer.observe(section));
+    });
   </script>
 </body>
 </html>
