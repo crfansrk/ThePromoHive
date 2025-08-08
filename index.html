@@ -307,7 +307,7 @@
 
     .slide-in {
       opacity: 0; /* Initially hidden */
-      transform: translateX(10%); /* Changed from 100px */
+      transform: translateX(10%); /* Slide in from the right */
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
@@ -316,14 +316,19 @@
     }
 
     .package {
-      /* Add a default transition delay for individual package animations */
       opacity: 0;
-      transform: translateX(10%); /* Changed from 100px */
+      transform: translateX(10%); /* Slide in from the right */
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
     .package.visible {
       animation: slideInFromRight 0.8s ease-out forwards;
+    }
+
+    body.disable-animation .slide-in,
+    body.disable-animation .package {
+      animation: none !important;
+      transform: none !important;
     }
   </style>
 </head>
@@ -493,6 +498,23 @@
       // Observe the "Packages" and "FAQ" sections
       const sections = document.querySelectorAll('.slide-in, .package');
       sections.forEach((section) => observer.observe(section));
+    });
+
+    // Smooth scroll and disable animations for FAQ navigation
+    document.querySelector('nav a[href="#faq"]').addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+
+      // Temporarily disable animations
+      document.body.classList.add('disable-animation');
+
+      // Smooth scroll to FAQ section
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Re-enable animations after scroll
+      setTimeout(() => {
+        document.body.classList.remove('disable-animation');
+      }, 500); // Match this duration with your CSS transition duration
     });
   </script>
 </body>
