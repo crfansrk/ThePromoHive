@@ -33,6 +33,12 @@
       color: var(--text);
     }
 
+    /* Horizontal Overflow Fix */
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
     nav {
       position: fixed;
       top: 0;
@@ -175,7 +181,7 @@
       transition: transform 0.3s;
       /* Add a default transition delay for individual package animations */
       opacity: 0;
-      transform: translateX(100px);
+      transform: translateX(10%); /* Changed from 100px */
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
@@ -271,7 +277,7 @@
     @keyframes slideInFromRight {
       from {
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10%); /* Changed from 100px */
       }
       to {
         opacity: 1;
@@ -281,7 +287,7 @@
 
     .slide-in {
       opacity: 0; /* Initially hidden */
-      transform: translateX(100px); /* Start off-screen to the right */
+      transform: translateX(10%); /* Changed from 100px */
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
@@ -292,7 +298,7 @@
     .package {
       /* Add a default transition delay for individual package animations */
       opacity: 0;
-      transform: translateX(100px);
+      transform: translateX(10%); /* Changed from 100px */
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
