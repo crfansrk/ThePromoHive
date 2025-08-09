@@ -1,332 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ThePromoHive</title>
-  <meta name="description" content="Get real Instagram growth through our custom promotion packages. Boost your brand today with ThePromoHive." />
-  <meta name="keywords" content="Instagram promotion, social media growth, influencer marketing, buy Instagram promo, ThePromoHive" />
-  <meta name="author" content="ThePromoHive" />
-  <meta property="og:title" content="ThePromoHive - Instagram Promotion Services">
-  <meta property="og:description" content="Grow your Instagram account organically through manual promotions. Select from our tailored packages.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://thepromohive.vercel.app">
-  <meta property="og:image" content="https://thepromohive.vercel.app/thumbnail.jpg">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ThePromoHive</title>
+<meta name="description" content="Get real Instagram growth through our custom promotion packages. Boost your brand today with ThePromoHive." />
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Font Awesome icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --primary: #007BFF;
+  --bg: #f0f8ff;
+  --text: #333;
+}
 
-  <style>
-    :root {
-      --primary: #007BFF;
-      --bg: #f0f8ff;
-      --text: #333;
-      --white: #fff;
-    }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-    html, body {
-      max-width: 100%;
-      overflow-x: hidden;
-    }
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.85);
-      color: white;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 12px 20px;
-      z-index: 1000;
-      height: 60px;
-      box-sizing: border-box;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-    nav a:hover {
-      color: var(--primary);
-    }
-    header {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-    }
-    header video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-    header .overlay {
-      height: calc(100vh - 60px); /* subtract nav height */
-      display: flex;
-      flex-direction: column;
-      justify-content: center; /* vertical center */
-      align-items: center;     /* horizontal center */
-      text-align: center;
-      color: white;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-    h1 {
-      font-size: 5rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      margin: 0;
-      line-height: 1.2;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      animation: fadeInLetters 3s ease-out forwards;
-    }
-    h1 .line {
-      display: block;
-      opacity: 0;
-      animation: fadeInLetter 0.5s ease-in forwards;
-    }
-    h1 .line:nth-child(1) { animation-delay: 0s; }
-    h1 .line:nth-child(2) { animation-delay: 0.5s; }
-    h1 .line:nth-child(3) { animation-delay: 1s; }
-    .tagline {
-      font-size: 1.5rem;
-      margin-top: 20px;
-      opacity: 0;
-      animation: fadeInTagline 2s ease-out forwards;
-      animation-delay: 1.5s;
-    }
-    @keyframes fadeInLetters { to { opacity: 1; } }
-    @keyframes fadeInLetter { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
-    @keyframes fadeInTagline { from { opacity: 0; } to { opacity: 1; } }
-    @media (max-width: 600px) {
-      h1 { font-size: 3rem; }
-      .tagline { font-size: 1rem; }
-    }
-    .packages {
-      padding: 100px 20px 40px;
-      max-width: 1100px;
-      margin: auto;
-      overflow-x: hidden;
-    }
-    .faq {
-      max-width: 800px;
-      margin: auto;
-      padding: 40px 20px;
-      overflow-x: hidden;
-    }
-    .package {
-      background: white;
-      border-left: 6px solid var(--primary);
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      margin-bottom: 20px;
-      cursor: pointer;
-      opacity: 0;
-      transform: translate3d(40px, 0, 0);
-      will-change: transform, opacity;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .package:hover { transform: scale(1.02); }
-    .package h2 { margin: 0; color: var(--primary); }
-    .package-details { display: none; margin-top: 10px; animation: fadeIn 0.3s ease-in; }
-    .package-details ul { padding-left: 20px; margin: 10px 0; }
-    .payment-options {
-      display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px;
-    }
-    .payment-options div {
-      background: #e0ecff; padding: 10px; border-radius: 8px;
-      text-align: center; flex: 1; cursor: pointer; transition: 0.3s;
-    }
-    .payment-options div:hover { background: #d4e3ff; }
-    .payment-options i { margin-right: 8px; color: #333; }
-    .coming-soon { font-size: 0.8em; color: red; margin-top: 5px; }
-    .faq h2 { text-align: center; }
-    .faq h3 {
-      cursor: pointer;
-      background: #cce5ff;
-      padding: 12px;
-      margin-bottom: 5px;
-      border-radius: 5px;
-    }
-    .faq p { display: none; margin: 0 0 20px; padding: 0 10px; }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #000;
-      color: #fff;
-    }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to   { opacity: 1; transform: translateY(0);} }
-    /* Slide-in for packages (right) */
-    @keyframes slideInFromRight {
-      from { opacity: 0; transform: translate3d(40px, 0, 0); }
-      to { opacity: 1; transform: translate3d(0, 0, 0); }
-    }
-    .slide-in, .package {
-      opacity: 0;
-      transform: translate3d(40px, 0, 0);
-      will-change: transform, opacity;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .slide-in.visible, .package.visible { animation: slideInFromRight 0.8s ease-out forwards; }
-    /* Slide-in for FAQ (bottom) */
-    @keyframes slideInFromBottom {
-      from { opacity: 0; transform: translate3d(0, 40px, 0); }
-      to { opacity: 1; transform: translate3d(0, 0, 0); }
-    }
-    .slide-in-up {
-      opacity: 0;
-      transform: translate3d(0, 40px, 0);
-      will-change: transform, opacity;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .slide-in-up.visible { animation: slideInFromBottom 0.8s ease-out forwards; }
-  </style>
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* --- NAVBAR --- */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.85);
+  color: white;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  height: 35px;
+  padding: 2px 14px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+nav a:hover { color: var(--primary); }
+
+/* --- HEADER / HERO --- */
+header { position: relative; height: 100vh; overflow: hidden; }
+header video, header img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+header .overlay {
+  height: calc(100vh - 35px);
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center; color: white; padding: 20px;
+}
+
+/* --- HERO TITLE --- */
+h1 {
+  font-size: 5rem; font-weight: bold;
+  text-transform: uppercase;
+  margin: 0; line-height: 1.2;
+  display: flex; flex-direction: column; align-items: center;
+  opacity: 0; animation: fadeInLetters 3s ease-out forwards;
+}
+h1 .line {
+  display: block; opacity: 0;
+  animation: fadeInLetter 0.5s ease-in forwards;
+}
+h1 .line:nth-child(1){animation-delay:0s;}
+h1 .line:nth-child(2){animation-delay:0.5s;}
+h1 .line:nth-child(3){animation-delay:1s;}
+.tagline {
+  font-size: 1.5rem; margin-top: 20px;
+  opacity: 0;
+  animation: fadeInTagline 2s ease-out forwards;
+  animation-delay: 1.5s;
+}
+@keyframes fadeInLetters { to { opacity: 1; } }
+@keyframes fadeInLetter { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+@keyframes fadeInTagline { from {opacity:0;} to {opacity:1;} }
+
+@media(max-width:600px){
+  h1 { font-size:3rem; }
+  .tagline { font-size:1rem;}
+}
+
+/* --- CONTENT SECTIONS --- */
+.packages { padding: 100px 20px 40px; max-width: 1100px; margin: auto; overflow-x: hidden; }
+.faq { max-width: 800px; margin: auto; padding: 40px 20px; overflow-x: hidden; }
+
+.package {
+  background: white;
+  border-left: 6px solid var(--primary);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translate3d(40px, 0, 0);
+}
+.package:hover { transform: scale(1.02); }
+.package h2 { margin: 0; color: var(--primary); }
+
+/* --- CLICK EXPAND SLIDE-UP --- */
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.package-details {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+}
+.package-details.open {
+  max-height: 800px;
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideUpFade 0.4s ease-out;
+}
+
+.package-details ul { padding-left: 20px; margin: 10px 0; }
+
+.payment-options {
+  display: flex; flex-wrap: wrap; gap: 15px;
+  margin-top: 10px;
+}
+.payment-options div {
+  background: #e0ecff; padding: 10px; border-radius: 8px;
+  text-align: center; flex: 1; cursor: pointer;
+  transition: 0.3s;
+}
+.payment-options div:hover { background: #d4e3ff; }
+.payment-options i { margin-right: 8px; color: #333; }
+.coming-soon { font-size: 0.8em; color: red; margin-top: 5px; }
+
+/* FAQ */
+.faq h2 { text-align: center; }
+.faq h3 {
+  cursor: pointer; background: #cce5ff;
+  padding: 12px; margin-bottom: 5px;
+  border-radius: 5px; transition: background 0.3s;
+}
+.faq h3:hover { background: #b3daff; }
+.faq p {
+  display: none;
+  margin: 0 0 20px;
+  padding: 0 10px;
+  overflow: hidden;
+}
+
+/* --- FOOTER SLIM --- */
+footer {
+  text-align: center;
+  padding: 8px;
+  background: #000;
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes slideInFromRight {
+  from {opacity:0; transform:translate3d(40px, 0, 0);}
+  to {opacity:1; transform:translate3d(0, 0, 0);}
+}
+.slide-in, .package {
+  opacity:0; transform:translate3d(40px,0,0);
+}
+.slide-in.visible, .package.visible {
+  animation: slideInFromRight 0.8s ease-out forwards;
+}
+
+@keyframes slideInFromBottom {
+  from {opacity:0; transform:translate3d(0, 40px, 0);}
+  to {opacity:1; transform:translate3d(0, 0, 0);}
+}
+.slide-in-up { opacity:0; transform:translate3d(0, 40px, 0);}
+.slide-in-up.visible { animation: slideInFromBottom 0.8s ease-out forwards; }
+</style>
 </head>
 <body>
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="#packages">Packages</a>
-    <a href="#faq">FAQ</a>
-  </nav>
+<nav>
+  <a href="#">Home</a>
+  <a href="#packages">Packages</a>
+  <a href="#faq">FAQ</a>
+</nav>
 
-  <header>
-    <video autoplay muted loop>
-      <source src="background.mp4" type="video/mp4" />
-    </video>
-    <div class="overlay">
-      <h1>
-        <span class="line">THE</span>
-        <span class="line">PROMO</span>
-        <span class="line">HIVE</span>
-      </h1>
-      <div class="tagline">Grow with us on social media</div>
-    </div>
-  </header>
+<header>
+  <video autoplay muted loop playsinline onerror="this.style.display='none'; document.getElementById('fallback-img').style.display='block';">
+    <source src="background.mp4" type="video/mp4" />
+  </video>
+  <img id="fallback-img" src="fallback.jpg" alt="Hero Background" style="display:none;">
+  <div class="overlay">
+    <h1>
+      <span class="line">THE</span>
+      <span class="line">PROMO</span>
+      <span class="line">HIVE</span>
+    </h1>
+    <div class="tagline">Grow with us on social media</div>
+  </div>
+</header>
 
-  <div class="packages slide-in" id="packages">
-    <h2>Our Promotion Packages</h2>
-    <!-- Packages -->
-    <div class="package" onclick="toggleDetails(this)">
-      <h2>Starter Package - $29</h2>
-      <div class="package-details">
-        <ul>
-          <li>Promotion on 2 pages with 100k+ followers</li>
-          <li>Real & Organic Growth</li>
-          <li>Delivery in 12-48 hours</li>
-        </ul>
-        <div class="payment-options">
-          <div onclick="window.open('https://www.paypal.me/shahrukhbnr','_blank')"><i class="fab fa-paypal"></i> PayPal</div>
-          <div><i class="fab fa-stripe"></i> Stripe<div class="coming-soon">Coming Soon</div></div>
-          <div><i class="fa-solid fa-money-bill-transfer"></i> Wise<div class="coming-soon">Coming Soon</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="package" onclick="toggleDetails(this)">
-      <h2>Growth Package - $59</h2>
-      <div class="package-details">
-        <ul>
-          <li>Promotion on 5 pages with 300k+ followers</li>
-          <li>Faster Exposure</li>
-          <li>Delivery in 12-48 hours</li>
-        </ul>
-        <div class="payment-options">
-          <div onclick="window.open('https://www.paypal.me/shahrukhbnr','_blank')"><i class="fab fa-paypal"></i> PayPal</div>
-          <div><i class="fab fa-stripe"></i> Stripe<div class="coming-soon">Coming Soon</div></div>
-          <div><i class="fa-solid fa-money-bill-transfer"></i> Wise<div class="coming-soon">Coming Soon</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="package" onclick="toggleDetails(this)">
-      <h2>Elite Package - $119</h2>
-      <div class="package-details">
-        <ul>
-          <li>Promotion on 10 pages with 1M+ followers</li>
-          <li>Maximum Reach & Fast Results</li>
-          <li>Delivery in 12-48 hours</li>
-        </ul>
-        <div class="payment-options">
-          <div onclick="window.open('https://www.paypal.me/shahrukhbnr','_blank')"><i class="fab fa-paypal"></i> PayPal</div>
-          <div><i class="fab fa-stripe"></i> Stripe<div class="coming-soon">Coming Soon</div></div>
-          <div><i class="fa-solid fa-money-bill-transfer"></i> Wise<div class="coming-soon">Coming Soon</div></div>
-        </div>
+<!-- PACKAGES -->
+<div class="packages slide-in" id="packages">
+  <h2>Our Promotion Packages</h2>
+
+  <div class="package" onclick="toggleDetails(this)">
+    <h2>Starter Package - $29</h2>
+    <div class="package-details">
+      <ul>
+        <li>Promotion on 2 pages with 100k+ followers</li>
+        <li>Real & Organic Growth</li>
+        <li>Delivery in 12-48 hours</li>
+      </ul>
+      <div class="payment-options">
+        <div onclick="event.stopPropagation(); window.open('https://www.paypal.me/shahrukhbnr','_blank')"><i class="fab fa-paypal"></i> PayPal</div>
+        <div><i class="fab fa-stripe"></i> Stripe<div class="coming-soon">Coming Soon</div></div>
+        <div><i class="fa-solid fa-money-bill-transfer"></i> Wise<div class="coming-soon">Coming Soon</div></div>
       </div>
     </div>
   </div>
 
-  <!-- FAQ -->
-  <div class="faq slide-in-up" id="faq">
-    <h2>Frequently Asked Questions</h2>
-    <h3 onclick="toggleFaq(this)">When will my promotion start?</h3>
-    <p>Promotions start within 12–48 hours after purchase.</p>
-    <h3 onclick="toggleFaq(this)">Are the followers real?</h3>
-    <p>Yes! We promote manually through real Instagram pages — no bots, no tricks.</p>
-    <h3 onclick="toggleFaq(this)">How do I pay?</h3>
-    <p>Currently through PayPal. Stripe and Wise coming soon!</p>
-    <h3 onclick="toggleFaq(this)">What type of content works best?</h3>
-    <p>Reels and engaging posts with clear CTAs perform best on promoted pages.</p>
-    <h3 onclick="toggleFaq(this)">Can I target a specific niche or region?</h3>
-    <p>Yes! Let us know your niche (fashion, business, music, etc.) and we’ll match accordingly.</p>
-    <h3 onclick="toggleFaq(this)">Can I see results even with the Starter package?</h3>
-    <p>Yes, the Starter package provides exposure through 2 active niche pages — great for testing the waters.</p>
-    <h3 onclick="toggleFaq(this)">What if I want a custom campaign?</h3>
-    <p>We offer custom promo bundles tailored to your audience. Contact us on Instagram or mail us.</p>
+  <div class="package" onclick="toggleDetails(this)">
+    <h2>Growth Package - $59</h2>
+    <div class="package-details">
+      <ul>
+        <li>Promotion on 5 pages with 300k+ followers</li>
+        <li>Faster Exposure</li>
+        <li>Delivery in 12-48 hours</li>
+      </ul>
+      <div class="payment-options">
+        <div onclick="event.stopPropagation(); window.open('https://www.paypal.me/shahrukhbnr','_blank')"><i class="fab fa-paypal"></i> PayPal</div>
+        <div><i class="fab fa-stripe"></i> Stripe<div class="coming-soon">Coming Soon</div></div>
+        <div><i class="fa-solid fa-money-bill-transfer"></i> Wise<div class="coming-soon">Coming Soon</div></div>
+      </div>
+    </div>
   </div>
 
-  <footer>
-    <p>&copy; 2025 ThePromoHive. All rights reserved.</p>
-  </footer>
+  <div class="package" onclick="toggleDetails(this)">
+    <h2>Elite Package - $119</h2>
+    <div class="package-details">
+      <ul>
+        <li>Promotion on 10 pages with 1M+ followers</li>
+        <li>Maximum Reach & Fast Results</li>
+        <li>Delivery in 12-48 hours</li>
+      </ul>
+      <div class="payment-options">
+        <div onclick="event.stopPropagation(); window.open('https://www.paypal.me/shahrukhbnr','_blank')"><i class="fab fa-paypal"></i> PayPal</div>
+        <div><i class="fab fa-stripe"></i> Stripe<div class="coming-soon">Coming Soon</div></div>
+        <div><i class="fa-solid fa-money-bill-transfer"></i> Wise<div class="coming-soon">Coming Soon</div></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <script>
-    function toggleDetails(elem) {
-      const details = elem.querySelector('.package-details');
-      details.style.display = details.style.display === 'block' ? 'none' : 'block';
-    }
-    function toggleFaq(elem) {
-      const p = elem.nextElementSibling;
-      p.style.display = p.style.display === 'block' ? 'none' : 'block';
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            if (entry.target.classList.contains('package')) {
-              const packages = Array.from(document.querySelectorAll('.package'));
-              packages.forEach((pkg, index) => {
-                if (pkg === entry.target) {
-                  pkg.style.animationDelay = `${index * 0.2}s`;
-                  pkg.classList.add('visible');
-                }
-              });
-            } else {
-              entry.target.classList.add('visible');
-            }
-          } else {
-            entry.target.classList.remove('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-      const sections = document.querySelectorAll('.slide-in, .slide-in-up, .package');
-      sections.forEach((section) => observer.observe(section));
+<!-- FAQ -->
+<div class="faq slide-in-up" id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <h3 onclick="toggleFaq(this)">When will my promotion start?</h3>
+  <p>Promotions start within 12–48 hours after purchase.</p>
+
+  <h3 onclick="toggleFaq(this)">Are the followers real?</h3>
+  <p>Yes! We promote manually through real Instagram pages — no bots, no tricks.</p>
+
+  <h3 onclick="toggleFaq(this)">How do I pay?</h3>
+  <p>Currently through PayPal. Stripe and Wise coming soon!</p>
+
+  <h3 onclick="toggleFaq(this)">What type of content works best?</h3>
+  <p>Reels and engaging posts with clear CTAs perform best on promoted pages.</p>
+
+  <h3 onclick="toggleFaq(this)">Can I target a specific niche or region?</h3>
+  <p>Yes! Let us know your niche (fashion, business, music, etc.) and we’ll match accordingly.</p>
+
+  <h3 onclick="toggleFaq(this)">Can I see results even with the Starter package?</h3>
+  <p>Yes, the Starter package provides exposure through 2 active niche pages — great for testing the waters.</p>
+
+  <h3 onclick="toggleFaq(this)">What if I want a custom campaign?</h3>
+  <p>We offer custom promo bundles tailored to your audience. Contact us on Instagram or mail us.</p>
+</div>
+
+<footer>
+  <p>&copy; 2025 ThePromoHive. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleDetails(elem){
+  const details = elem.querySelector('.package-details');
+  details.classList.toggle('open');
+}
+
+function toggleFaq(elem) {
+  const p = elem.nextElementSibling;
+  if (p.style.display === 'block') {
+    p.style.maxHeight = p.scrollHeight + 'px';
+    requestAnimationFrame(() => {
+      p.style.maxHeight = '0';
+      p.style.opacity = '0';
     });
-  </script>
+    setTimeout(() => p.style.display = 'none', 300);
+  } else {
+    p.style.display = 'block';
+    p.style.maxHeight = '0';
+    p.style.opacity = '0';
+    requestAnimationFrame(() => {
+      p.style.maxHeight = p.scrollHeight + 'px';
+      p.style.opacity = '1';
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        if (entry.target.classList.contains('package')) {
+          const packages = Array.from(document.querySelectorAll('.package'));
+          packages.forEach((pkg, index) => {
+            if (pkg === entry.target) {
+              pkg.style.animationDelay = `${index * 0.2}s`;
+              pkg.classList.add('visible');
+            }
+          });
+        } else {
+          entry.target.classList.add('visible');
+        }
+      } else {
+        entry.target.classList.remove('visible'); // allow re-trigger
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.slide-in, .slide-in-up, .package').forEach(el => observer.observe(el));
+});
+</script>
 
 </body>
 </html>
